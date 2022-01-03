@@ -18,8 +18,7 @@ base_word_source = st.sidebar.radio(
 if base_word_source == 'List': 
     #input strings
         string_base_words = st.sidebar.text_area('Base Key Words', 
-        '''seperate words by comma, apple, banana, peach, (...)
-        ''')
+        '''seperate words by comma, apple, banana, peach, (...)''')
         #string to list
         list_base_word = string_base_words.split(",")
         #list to dataframe
@@ -34,6 +33,7 @@ else: #  base_word_source == 'CSV import':
             # Can be used wherever a "file-like" object is accepted:
             df_base_word = pd.read_csv(uploaded_file)
             df_base_word.columns = ['base_word']
+            df_base_word['base_word'] = df_base_word['base_word'].astype(str)
             #st.write(df_base_word)
         
 
@@ -44,8 +44,7 @@ match_word_source = st.sidebar.radio(
 if match_word_source == 'List': 
     #input strings
         string_match_words = st.sidebar.text_area('Match Key Words', 
-        '''seperate words by comma, apples, banaan, beach, (...)
-     ''')
+        '''seperate words by comma, apples, banaan, beach, (...)''')
         #string to list
         list_match_words = string_match_words.split(",")
         #list to dataframe
@@ -60,6 +59,7 @@ else: #  base_word_source == 'CSV import':
         # Can be used wherever a "file-like" object is accepted:
             df_match_word = pd.read_csv(uploaded_file)
             df_match_word.columns = ['match_word']
+            df_match_word['match_word'] = df_match_word['match_word'].astype(str)
             #st.write(df_match_word)
 
 # Create a function that takes two lists of strings for matching
