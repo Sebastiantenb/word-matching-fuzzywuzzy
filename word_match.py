@@ -11,7 +11,7 @@ st.title('Word Similarity Matching')  #Title of the webapp
 #text
 st.markdown('Need to match 2 lists of words or sentences? Need to match them despite spelling mistakes or minor differences in spelling? Then upload or copy one set of words as "Base Key Words" and the other set as "Match Key Words"')
 
-base_word_source = st.sidebar.selectbox(
+base_word_source = st.sidebar.radio(
      'Select "Base Words" from:',
      ('List', 'CSV import'))
 
@@ -37,7 +37,7 @@ else: #  base_word_source == 'CSV import':
             #st.write(df_base_word)
         
 
-match_word_source = st.sidebar.selectbox(
+match_word_source = st.sidebar.radio(
      'Select "Match Words" from:',
      ('List', 'CSV import'))
 
@@ -56,11 +56,11 @@ else: #  base_word_source == 'CSV import':
         if uploaded_file is not None:
             # To read file as bytes:
             bytes_data = uploaded_file.getvalue()
-            st.write(bytes_data)
+            #st.write(bytes_data)
         # Can be used wherever a "file-like" object is accepted:
             df_match_word = pd.read_csv(uploaded_file)
             df_match_word.columns = ['match_word']
-            st.write(df_match_word)
+            #st.write(df_match_word)
 
 # Create a function that takes two lists of strings for matching
 def match_name(name, list_names, min_score=0):
